@@ -1,4 +1,4 @@
-# Trafic-monitor
+# Trafic monitor system
 Traffic monitoring system on Node.js
 
 How does it work?
