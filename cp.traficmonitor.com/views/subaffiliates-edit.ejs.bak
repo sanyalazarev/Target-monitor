@@ -1,0 +1,17 @@
+<div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal">&times;</button>
+	<h4 class="modal-title">Edit subaffiliate</h4>
+</div>
+<div class="form-horizontal">
+	<div class="modal-body">
+		<input type="hidden" name="subaffiliateId" value="<%= subaffiliate.id %>" id="subaffiliateId" class="form-control">
+		<div class="form-group">
+			<label for="name" class="col-sm-3 control-label">Name</label>
+			<div class="col-sm-9"><input type="text" name="name" value="<%= subaffiliate.name %>" id="name" class="form-control" data-validation-engine="validate[required]"></div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-default edit-subaffiliate">Edit</button>
+		<button type="button" class="btn" data-dismiss="modal">Cancel</button>
+	</div>
+</div>

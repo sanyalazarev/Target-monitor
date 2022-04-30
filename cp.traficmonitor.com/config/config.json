@@ -1,0 +1,20 @@
+{
+  "default": {
+    "protocol": "http",
+    "domain": "cp.traficmonitor.com",
+    "port": 5676,
+    "dbUri": "mysql://{DB_USER}:{DB_PASS}@0.0.0.0/{DB_NAME}?connectionLimit=40&multipleStatements=true"
+  },
+  "production": {
+    "protocol": "http",
+    "domain": "cp.traficmonitor.com",
+    "port": 5676,
+    "dbUri": "mysql://{DB_USER}:{DB_PASS}@0.0.0.0/{DB_NAME}?connectionLimit=40&multipleStatements=true"
+  },
+  "development": {
+    "protocol": "http",
+    "domain": "cp.traficmonitor.com",
+    "port": 5676,
+    "dbUri": "mysql://{DB_USER}:{DB_PASS}@0.0.0.0/{DB_NAME}?connectionLimit=4&multipleStatements=true"
+  }
+}

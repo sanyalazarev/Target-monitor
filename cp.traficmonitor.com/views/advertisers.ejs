@@ -1,0 +1,121 @@
+<%- include('header') %>
+
+<div class="form-horizontal">
+	<div class="row page-header">
+		<div class="col-xs-12">
+			<h1>Advertiser settings</h1>
+		</div>
+	</div>
+	
+	<ul class="nav nav-tabs">
+		<li class="active" data-tab="offers"><a href="#tab1">Offers</a></li>
+		<li><a href="#tab2" data-tab="events">Goals</a></li>
+		<li><a href="#tab3" data-tab="domains">Tracking domains</a></li>
+	</ul>
+
+	<div class="row edit-info">
+		<div class="col-xs-12">
+			<div class="tab-content">
+				<div id="tab1" class="tab-pane active">
+					<p><a href="/offers/add" class="btn btn-sm btn-success add-row"><i class="glyphicon glyphicon-plus"></i>&nbsp;&nbsp;&nbsp;Add offer</a></p>
+					
+					<div class="table-responsive">
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th>#ID</th>
+									<th>Name</th>
+									<th>Description</th>
+									<th>URL</th>
+									<th>Public</th>
+									<th>Active</th>
+									<th class="text-center" style="width: 225px;">Action</th>
+								</tr>
+							</thead>
+							<tbody>
+							<% for(var i=0; i<offers.length; i++){%>
+								<tr data-id="<%= offers[i].id %>">
+									<td>#<%= offers[i].id %></td>
+									<td><%= offers[i].name %></td>
+									<td><%= (offers[i].description.length > 25 ? offers[i].description.substr(0, 25) + '...' : offers[i].description) %></td>
+									<td><%= offers[i].url %></td>
+									<td class="text-center"><img src="/img/label<%= offers[i].public %>.png" alt=""></td>
+									<td class="text-center"><img src="/img/label<%= offers[i].active %>.png" alt=""></td>
+									<td>
+										<a href="/offers/edit/<%= offers[i].id %>" class="btn btn-sm btn-default edit-row">Edit</a>
+										<a href="/offers/pricing/<%= offers[i].id %>" class="btn btn-sm btn-default">Edit pricing</a>
+										<button class="btn btn-sm btn-danger remove-row">Delete</button>
+									</td>
+								</tr>
+							<% } %>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div id="tab2" class="tab-pane">
+					<p><a href="/events/add" class="btn btn-sm btn-success add-row"><i class="glyphicon glyphicon-plus"></i>&nbsp;&nbsp;&nbsp;Add goal</a></p>
+					
+					<div class="table-responsive">
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th style="width: 100px;">#ID</th>
+									<th>Name</th>
+									<th style="width: 70px;">Price</th>
+									<th style="width: 70px;">Regular</th>
+									<th style="width: 60px;">Public</th>
+									<th class="text-center" style="width: 130px;">Action</th>
+								</tr>
+							</thead>
+							<tbody>
+							<% for(var i=0; i<events.length; i++){%>
+								<tr data-id="<%= events[i].id %>">
+									<td>#<%= events[i].id %></td>
+									<td><%= events[i].name %></td>
+									<td><%= events[i].price %>$</td>
+									<td class="text-center"><img src="/img/label<%= events[i].regular %>.png" alt=""></td>
+									<td class="text-center"><img src="/img/label<%= events[i].public %>.png" alt=""></td>
+									<td class="text-right">
+										<a href="/events/edit/<%= events[i].id %>" class="btn btn-sm btn-default edit-row">Edit</a>
+										<button class="btn btn-sm btn-danger remove-row">Delete</button>
+									</td>
+								</tr>
+							<% } %>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div id="tab3" class="tab-pane">
+					<p><a href="/tracking-domains/add" class="btn btn-sm btn-success add-row"><i class="glyphicon glyphicon-plus"></i>&nbsp;&nbsp;&nbsp;Add domain</a></p>
+					
+					<div class="table-responsive">
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th style="width: 100px;">#ID</th>
+									<th>Domain</th>
+									<th class="text-center" style="width: 130px;">Action</th>
+								</tr>
+							</thead>
+							<tbody>
+							<% for(var i=0; i<domains.length; i++){%>
+								<tr data-id="<%= domains[i].id %>">
+									<td>#<%= domains[i].id %></td>
+									<td><%= domains[i].domain %></td>
+									<td class="text-right">
+										<a href="/tracking-domains/edit/<%= domains[i].id %>" class="btn btn-sm btn-default edit-row">Edit</a>
+										<button class="btn btn-sm btn-danger remove-row">Delete</button>
+									</td>
+								</tr>
+							<% } %>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<%- include('footer') %>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<meta name="description" content="">
+	<meta name="author" content="Aleksandr Lazarev <sanyalazarev@ukr.net>">
+	
+	<link rel="shortcut icon" href="/img/favicon.ico">
+
+	<title>CPanel</title>
+
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600&subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+	
+	<link href="/css/bootstrap.css" rel="stylesheet">
+	<link href="/css/main.css" rel="stylesheet">
+
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+    <div class="container">
+		<form action="" method="post" class="form-signin">
+			<h3 class="text-center" style="margin-bottom: 25px;">Control Panel</h3>
+			<div class="alert alert-danger hidden">Wrong email or password.</div>
+			<div class="form-group">
+				<label for="email" class="sr-only">Email</label>
+				<input type="text" name="email" id="email" class="form-control" placeholder="Email" required autofocus>
+			</div>
+			<div class="form-group">
+				<label for="password" class="sr-only">Password</label>
+				<input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
+			</div>
+			<button type="submit" class="btn btn-primary btn-block">Enter</button>
+		</form>
+    </div>
+	
+	<script src="/js/jquery-1.7.2.min.js"></script>
+	<script src="/js/socket.io.min.js"></script>
+	<script src="/js/cookie.js"></script>
+	
+	<script src="/js/datasocket.js"></script>
+	
+	<script src="/js/page.<%= page %>.js"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+		</div>
+	</div>
+</div>
+
+<div id="modal" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+		</div>
+	</div>
+</div>
+
+<div id="modal-crop-image" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+						aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Crop image</h4>
+			</div>
+			<div class="modal-body">
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="preloader"><img src="/img/preloader.gif" alt="wait..."> Waiting...</div>
+
+<script src="/js/jquery-1.7.2.min.js"></script>
+<script src="/js/socket.io.min.js"></script>
+<script src="/js/cookie.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/bootstrap-notify.min.js"></script>
+<script src="/js/jquery.chosen.min.js"></script>
+<script src="/js/jquery.ui.custom.min.js"></script>
+<script src="/js/formstone.core.js"></script>
+<script src="/js/formstone.upload.js"></script>
+<script src="/js/jquery.jcrop.min.js"></script>
+<script src="/js/jquery.chosen.min.js"></script>
+
+<script src="/js/datasocket.js?<%= randomHash%>" id="socket-script" data-socket-address="<%= socketAddress%>"></script>
+
+<script src="/js/common.js?<%= randomHash%>"></script>
+
+<script src="/js/page.<%= page %>.js?<%= randomHash%>"></script>
+
+<% if(page == "users-edit") { %>
+<script
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkiTGAXnHGC3J860-lsUWDZTJKm2fOs6k&libraries=places&language=en&callback=initAutocomplete"
+	async defer>
+	</script>
+<% } %>
+</body>
+
+</html>

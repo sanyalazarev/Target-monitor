@@ -1,0 +1,61 @@
+<%- include('header') %>
+
+<div id="list">
+	<div class="row page-header">
+		<div class="col-sm-3"><h1>Clicks</h1></div>
+		<div class="col-sm-9 text-right">
+			<form action="" method="GET" class="form-inline">
+				<div class="form-group">
+					<input type="text" name="dateFrom" value="<%= dateFrom %>" placeholder="Start date" id="dateFrom" class="form-control datepicker">
+				</div>
+				<div class="form-group">
+					<input type="text" name="dateTo" value="<%= dateTo %>" placeholder="End date" id="dateTo" class="form-control datepicker">
+				</div>
+				<button type="submit" class="btn btn-default">Show</button>
+			</form>
+		</div>
+	</div>
+	
+	<div class="table-responsive">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th><span class="label label-default">Total: <%= total.clicks %></span><br>#ID</th>
+					<th><span class="label label-default">Total: <%= total.persons %></span><br>PersonID</th>
+					<th>Offer</th>
+					<th>Creative</th>
+					<th>SubAffiliate</th>
+					<th>IP</th>
+					<th>Country</th>
+					<th>A1</th>
+					<th>A2</th>
+					<th>A3</th>
+					<th>A4</th>
+					<th>A5</th>
+					<th>Date</th>
+				</tr>
+			</thead>
+			<tbody>
+			<% for(var i=0; i<clicks.length; i++){ %>
+				<tr data-id="<%= clicks[i].id %>">
+					<td>#<%= clicks[i].id %></td>
+					<td><%= clicks[i].personId %></td>
+					<td><%= clicks[i].offerName %></td>
+					<td><%= clicks[i].creativeName %></td>
+					<td><%= clicks[i].subAffiliateName ? clicks[i].subAffiliateName : 'NO' %></td>
+					<td><%= clicks[i].ip %></td>
+					<td><%= clicks[i].country %></td>
+					<td><%= clicks[i].a1 %></td>
+					<td><%= clicks[i].a2 %></td>
+					<td><%= clicks[i].a3 %></td>
+					<td><%= clicks[i].a4 %></td>
+					<td><%= clicks[i].a5 %></td>
+					<td><%= clicks[i].date %></td>
+				</tr>
+			<% } %>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<%- include('footer') %>

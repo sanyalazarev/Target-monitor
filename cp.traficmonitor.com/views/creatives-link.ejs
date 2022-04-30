@@ -1,0 +1,32 @@
+<div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal">&times;</button>
+	<h4 class="modal-title">Get link</h4>
+</div>
+<div class="form-horizontal">
+	<div class="modal-body">
+		<div class="form-group">
+			<label for="name" class="col-sm-3 control-label">Offer ID</label>
+			<div class="col-sm-5"><input type="text" value="1" id="name" class="form-control offer-id"></div>
+		</div>
+		<div class="form-group">
+			<label for="name" class="col-sm-3 control-label">Subaffiliate</label>
+			<div class="col-sm-7">
+				<select class="form-control subaffiliate">
+					<option value="">--- Select ---</option>
+					<% for(var i=0; i<subaffiliates.length; i++){ %>
+					<option value="<%= subaffiliates[i].id %>"><%= subaffiliates[i].name %></option>
+					<% } %>
+				</select>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="name" class="col-sm-3 control-label">Link</label>
+			<div class="col-sm-9">
+				<p class="link">https://traficmonitor.com/monit?offer_id=1&affiliate_id=<%= userId %>&creative_id=<%= creativeId %></p>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	</div>
+</div>

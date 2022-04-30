@@ -1,0 +1,20 @@
+{
+  "name": "bot.anyavia.com",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fingerprintjs/fingerprintjs": "^3.3.0",
+    "detect-ip": "^1.0.1",
+    "express": "^4.17.1",
+    "geoip-country": "^4.0.77",
+    "iso-country-utils": "^1.1.2",
+    "mysql": "^2.18.1",
+    "request": "^2.88.2"
+  }
+}

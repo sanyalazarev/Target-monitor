@@ -1,0 +1,75 @@
+<%- include('header') %>
+
+<div id="list">
+	<div class="row page-header">
+		<div class="col-sm-3"><h1>Goals</h1></div>
+		<div class="col-sm-9 text-right">
+			<form action="" method="GET" class="form-inline">
+				<div class="form-group">
+					<input type="text" name="dateFrom" value="<%= dateFrom %>" placeholder="Start date" id="dateFrom" class="form-control datepicker">
+				</div>
+				<div class="form-group">
+					<input type="text" name="dateTo" value="<%= dateTo %>" placeholder="End date" id="dateTo" class="form-control datepicker">
+				</div>
+				<button type="submit" class="btn btn-default">Show</button>
+				<a href="/conversions/export?dateFrom=<%= dateFrom %>&dateTo=<%= dateTo %>" class="btn btn-warning"><i class="glyphicon glyphicon-export"></i> Export</a>
+			</form>
+		</div>
+	</div>
+	
+	<div class="table-responsive">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th style="width: 70px;">#ID</th>
+					<th>ClickID</th>
+					<th>PersonID</th>
+					<th>Offer</th>
+					<th>Affiliate</th>
+					<th>Goals</th>
+					<th>Creative</th>
+					<th>SubAffiliate</th>
+					<th>IP</th>
+					<th>Country</th>
+					<th>Payout</th>
+					<th>Comment</th>
+					<th>B1</th>
+					<th>B2</th>
+					<th>B3</th>
+					<th>B4</th>
+					<th>B5</th>
+					<th>Date click</th>
+					<th>Date goal</th>
+				</tr>
+			</thead>
+			
+			<tbody>
+				<% for(var i=0; i<conversions.length; i++) { %>
+				<tr data-id="<%= conversions[i].id %>">
+					<td>#<%= conversions[i].id %></td>
+					<td><%= conversions[i].clickId %></td>
+					<td><%= conversions[i].personId %><br><a href="/person/remove/<%= conversions[i].personId %>">Delete</a></td>
+					<td><%= conversions[i].offerName %></td>
+					<td><%= conversions[i].affiliateName %></td>
+					<td><%= conversions[i].eventName %></td>
+					<td><%= conversions[i].creativeName %></td>
+					<td><%= conversions[i].subAffiliateName ? conversions[i].subAffiliateName : 'NO' %></td>
+					<td><%= conversions[i].ip %></td>
+					<td><%= conversions[i].country %></td>
+					<td><%= conversions[i].reward %>$</td>
+					<td><%= conversions[i].comment %></td>
+					<td><%= conversions[i].b1 %></td>
+					<td><%= conversions[i].b2 %></td>
+					<td><%= conversions[i].b3 %></td>
+					<td><%= conversions[i].b4 %></td>
+					<td><%= conversions[i].b5 %></td>
+					<td><%= conversions[i].clickDate %></td>
+					<td><%= conversions[i].date %></td>
+				</tr>
+				<% } %>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<%- include('footer') %>

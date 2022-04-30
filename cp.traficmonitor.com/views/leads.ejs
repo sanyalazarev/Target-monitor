@@ -1,0 +1,54 @@
+<%- include('header') %>
+
+<div id="list">
+	<div class="row page-header">
+		<div class="col-sm-3"><h1>Leads</h1></div>
+		<div class="col-sm-9 text-right">
+			<form action="" method="GET" class="form-inline">
+				<div class="form-group">
+					<input type="text" name="dateFrom" value="<%= dateFrom %>" placeholder="Start date" id="dateFrom" class="form-control datepicker">
+				</div>
+				<div class="form-group">
+					<input type="text" name="dateTo" value="<%= dateTo %>" placeholder="End date" id="dateTo" class="form-control datepicker">
+				</div>
+				<button type="submit" class="btn btn-default">Show</button>
+			</form>
+		</div>
+	</div>
+	
+	<div class="table-responsive">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th style="width: 70px;">PersonID</th>
+					<th>Offer</th>
+					<th>Affiliate</th>
+					<th>SubAffiliate</th>
+					<th>Creative</th>
+					<th>Country</th>
+					<th>Payout</th>
+					<th>Goals</th>
+					<th>Date</th>
+				</tr>
+			</thead>
+			
+			<tbody>
+				<% for(var i=0; i<leads.length; i++) { %>
+				<tr>
+					<td><%= leads[i].personId %></td>
+					<td><%= leads[i].offerName %></td>
+					<td><%= leads[i].affiliateName %></td>
+					<td><%= leads[i].subAffiliateName.length ? leads[i].subAffiliateName.join(", ") : 'NO' %></td>
+					<td><%= leads[i].creativeName %></td>
+					<td><%= leads[i].country %></td>
+					<td><%= leads[i].reward %>$</td>
+					<td><%= leads[i].events.join(", ") %></td>
+					<td><%= leads[i].date %></td>
+				</tr>
+				<% } %>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<%- include('footer') %>

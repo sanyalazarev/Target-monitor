@@ -1,0 +1,20 @@
+<script>
+	function initFingerprintJS() {
+		const fpPromise = FingerprintJS.load()
+
+		fpPromise
+			.then(fp => fp.get())
+			.then(result => {
+				const xhttp = new XMLHttpRequest();
+				xhttp.open("POST", "/save-fingerprint", true); 
+				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200)
+						if(this.responseText != 'ERROR')
+							window.location.href = this.responseText;
+				};
+				xhttp.send("fingerprint="+result.visitorId + window.location.search.replace("?", "&"));
+			})
+	}
+</script>
+<script async src="/js/fp.min.js" onload="initFingerprintJS()"></script>

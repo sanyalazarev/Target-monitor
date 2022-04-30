@@ -1,0 +1,109 @@
+<%- include('header') %>
+
+<div class="form-horizontal">
+	<div class="row page-header">
+		<div class="col-xs-12">
+			<h1>Affiliate settings</h1>
+		</div>
+	</div>
+	
+	<ul class="nav nav-tabs">
+		<li class="active"><a href="#tab1">Creatives</a></li>
+		<li><a href="#tab2">Subaffiliates</a></li>
+		<li><a href="#tab3">Postbacks</a></li>
+	</ul>
+
+	<div class="row edit-info">
+		<div class="col-xs-12">
+			<div class="tab-content">
+				<div id="tab1" class="tab-pane active">
+					<p><a href="/creatives/add" class="btn btn-success btn-sm add-row"><i class="glyphicon glyphicon-plus"></i>&nbsp;&nbsp;&nbsp;Add creative</a></p>
+					
+					<div class="table-responsive">
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th style="width: 100px;">#ID</th>
+									<th>Name</th>
+									<th class="text-right">Action</th>
+								</tr>
+							</thead>
+							<tbody>
+							<% for(var i=0; i<creatives.length; i++){%>
+								<tr data-id="<%= creatives[i].id %>">
+									<td>#<%= creatives[i].id %></td>
+									<td><%= creatives[i].name %></td>
+									<td class="text-right">
+										<a href="/creatives/link/<%= creatives[i].id %>" class="btn btn-sm btn-primary get-link">Get link</a>
+										<a href="/creatives/edit/<%= creatives[i].id %>" class="btn btn-sm btn-default edit-row">Edit</a>
+										<button class="btn btn-sm btn-danger remove-row">Delete</button>
+									</td>
+								</tr>
+							<% } %>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div id="tab2" class="tab-pane">
+					<p><a href="/subaffiliates/add" class="btn btn-success btn-sm add-row"><i class="glyphicon glyphicon-plus"></i>&nbsp;&nbsp;&nbsp;Add subaffiliate</a></p>
+					
+					<div class="table-responsive">
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th style="width: 100px;">#ID</th>
+									<th>Name</th>
+									<th class="text-right">Action</th>
+								</tr>
+							</thead>
+							<tbody>
+							<% for(var i=0; i<subaffiliates.length; i++){%>
+								<tr data-id="<%= subaffiliates[i].id %>">
+									<td>#<%= subaffiliates[i].id %></td>
+									<td><%= subaffiliates[i].name %></td>
+									<td class="text-right">
+										<a href="/subaffiliates/edit/<%= subaffiliates[i].id %>" class="btn btn-sm btn-default edit-row">Edit</a>
+										<button class="btn btn-sm btn-danger remove-row">Delete</button>
+									</td>
+								</tr>
+							<% } %>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div id="tab3" class="tab-pane">
+					<p><a href="/postbacks/add" class="btn btn-success btn-sm add-row"><i class="glyphicon glyphicon-plus"></i>&nbsp;&nbsp;&nbsp;Add postback</a></p>
+					
+					<div class="table-responsive">
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th style="width: 100px;">#ID</th>
+									<th>Name</th>
+									<th>URL</th>
+									<th>Method</th>
+								</tr>
+							</thead>
+							<tbody>
+							<% for(var i=0; i<postbacks.length; i++){%>
+								<tr data-id="<%= postbacks[i].id %>">
+									<td>#<%= postbacks[i].id %></td>
+									<td><%= postbacks[i].name %></td>
+									<td><%= postbacks[i].url %></td>
+									<td><%= postbacks[i].method %></td>
+									<td class="text-right">
+										<a href="/postbacks/edit/<%= postbacks[i].id %>" class="btn btn-sm btn-default edit-row">Edit</a>
+										<button class="btn btn-sm btn-danger remove-row">Delete</button>
+									</td>
+								</tr>
+							<% } %>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<%- include('footer') %>

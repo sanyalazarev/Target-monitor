@@ -1,0 +1,52 @@
+<%- include('header') %>
+
+<div id="list">
+	<div class="row page-header">
+		<div class="col-xs-6"><h1>Leads</h1></div>
+		<div class="col-xs-6 form-inline text-right">
+			<div class="form-group">
+				<label for="offer" style="margin-right: 10px;">Offer</label>
+				<select name="" class="form-control" id="offer">
+				<% for(var j=0; j<offers.length; j++) { %>
+				<option value="<%= offers[j].id %>" <%= offers[j].id == offerId ? 'selected' : '' %>><%= offers[j].name %></option>
+				<% } %>
+				</select>
+			</div>
+		</div>
+	</div>
+	<div class="table-responsive">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th style="width: 70px;">PersonID</th>
+					<th>Affiliate</th>
+					<th>SubAffiliate</th>
+					<th>Creative</th>
+					<th>Country</th>
+					<% for(var j=0; j<events.length; j++) { %>
+					<th>Event <%= events[j].name %></th>
+					<% } %>
+					<th>Date</th>
+				</tr>
+			</thead>
+			
+			<tbody>
+				<% for(var i=0; i<leads.length; i++) { %>
+				<tr>
+					<td><%= leads[i].personId %></td>
+					<td><%= leads[i].affiliateName %></td>
+					<td><%= leads[i].subAffiliateName ? leads[i].subAffiliateName : 'NO' %></td>
+					<td><%= leads[i].creativeName %></td>
+					<td><%= leads[i].country %></td>
+					<% for(var j=0; j<events.length; j++) { %>
+					<td data-e="<%= events[j].id %>"><img src="/img/label<%= leads[i].events.indexOf(events[j].id.toString()) != -1 ? 1 : 0 %>.png" alt=""></td>
+					<% } %>
+					<td><%= leads[i].date %></td>
+				</tr>
+				<% } %>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<%- include('footer') %>

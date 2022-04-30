@@ -1,0 +1,43 @@
+<%- include('header') %>
+
+<div id="list">
+	<div class="row page-header">
+		<div class="col-sm-6"><h1>Offer pricing</h1></div>
+		<div class="col-xs-6 text-right">
+			<a href="/advertisers" class="btn btn-default"><i class="glyphicon glyphicon-arrow-left"></i>&nbsp;&nbsp;&nbsp;Back</a>
+			<a href="/offers/pricing/add/<%= offerId %>" class="btn btn-success add-row"><i class="glyphicon glyphicon-plus"></i>&nbsp;&nbsp;&nbsp;Add price</a>
+		</div>
+	</div>
+	
+	<div class="table-responsive">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>#ID</th>
+					<th>Country</th>
+					<th>Gender</th>
+					<th>Age</th>
+					<th>Price</th>
+					<th class="text-right">Action</th>
+				</tr>
+			</thead>
+			<tbody>
+			<% for(var i=0; i<pricing.length; i++){ %>
+				<tr data-id="<%= pricing[i].id %>">
+					<td>#<%= pricing[i].id %></td>
+					<td><%= pricing[i].country %></td>
+					<td><%= pricing[i].gender == 1 ? 'Men' : (pricing[i].gender == 2 ? 'Women' : 'All') %></td>
+					<td><%= pricing[i].ageFrom %> - <%= pricing[i].ageTo %></td>
+					<td><%= pricing[i].price %>$</td>
+					<td class="text-right">
+						<a href="/offers/pricing/edit/<%= pricing[i].id %>" class="btn btn-sm btn-default edit-row">Edit</a>
+						<button class="btn btn-sm btn-danger remove-row">Delete</button>
+					</td>
+				</tr>
+			<% } %>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<%- include('footer') %>

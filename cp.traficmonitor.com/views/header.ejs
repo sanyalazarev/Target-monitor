@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<meta name="description" content="">
+	<meta name="author" content="Aleksandr Lazarev <contact@halivan.com>">
+
+	<link rel="shortcut icon" href="/img/favicon.ico">
+
+	<title>Trafic monitor</title>
+
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600&subset=latin,cyrillic-ext' rel='stylesheet'
+		type='text/css'>
+
+	<link href="/css/bootstrap.css" rel="stylesheet">
+	<link href="/css/main.css?<%= randomHash%>" rel="stylesheet">
+	<link href="/css/jquery.chosen.css" rel="stylesheet">
+	<link href="/css/jquery.ui.custom.css" rel="stylesheet">
+	<link href="/css/formstone.upload.css" rel="stylesheet">
+	<link href="/css/jquery.jcrop.min.css" rel="stylesheet">
+	<link href="/css/jquery.chosen.css" rel="stylesheet">
+	<!-- <link href="/css/jquery.validationEngine.css" rel="stylesheet"> -->
+
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+	<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/">Trafic monitor</a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="https://traficmonitor.com" target="_blank">Go to the site</a></li>
+					<li class="logout"><a href="#"><i class="glyphicon glyphicon-log-out"></i>&nbsp;&nbsp;&nbsp;Log out</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="sidebar col-md-2">
+				<ul class="nav nav-sidebar">
+					<% if(userRole == 100) { %>
+					<li <%- (page == "users" || page == "users-add" || page == "users-edit") ? 'class="active"' : '' %>>
+						<a href="/">
+							<i class="glyphicon glyphicon-user"></i>&nbsp;&nbsp;&nbsp;Users
+						</a>
+					</li>
+					<% } %>
+					<li <%- (page == "affiliates") ? 'class="active"' : '' %>>
+						<a href="/affiliates">
+							<i class="glyphicon glyphicon-cog"></i>&nbsp;&nbsp;&nbsp;Affiliate settings
+						</a>
+					</li>
+					<% if(userRole > 10) { %>
+					<li <%- (page == "advertisers" || page == "advertisers-add" || page == "advertisers-edit" || page == "offers-pricing") ? 'class="active"' : '' %>>
+						<a href="/advertisers">
+							<i class="glyphicon glyphicon-cog"></i>&nbsp;&nbsp;&nbsp;Advertiser settings
+						</a>
+					</li>
+					<% } %>
+					<li <%- (page == "clicks" || page == "clicks-affiliate") ? 'class="active"' : '' %>>
+						<a href="/clicks">
+							<i class="glyphicon glyphicon-signal"></i>&nbsp;&nbsp;&nbsp;Clicks
+						</a>
+					</li>
+					<li <%- (page == "conversions" || page == "conversions-affiliate") ? 'class="active"' : '' %>>
+						<a href="/conversions">
+							<i class="glyphicon glyphicon-screenshot"></i>&nbsp;&nbsp;&nbsp;Goals
+						</a>
+					</li>
+					<li <%- (page == "leads" || page == "leads-affiliate") ? 'class="active"' : '' %>>
+						<a href="/leads">
+							<i class="glyphicon glyphicon-ok"></i>&nbsp;&nbsp;&nbsp;Leads
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="col-md-10 col-md-offset-2 main">

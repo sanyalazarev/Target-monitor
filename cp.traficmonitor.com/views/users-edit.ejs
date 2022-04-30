@@ -1,0 +1,72 @@
+<%- include('header') %>
+
+<div class="form-horizontal">
+	<div class="row page-header">
+		<div class="col-xs-8">
+			<h1>Edit profile</h1>
+		</div>
+		<div class="col-xs-4 text-right"><a href="/" class="btn btn-default">
+			<i class="glyphicon glyphicon-arrow-left"></i>&nbsp;&nbsp;&nbsp;Back</a>
+		</div>
+	</div>
+
+	<div class="row edit-info">
+		<div class="col-xs-12">
+			<input type="hidden" name="userId" value="<%= user.id %>" id="userId" class="form-control">
+			
+			<div class="form-group">
+				<label for="role" class="col-sm-2 control-label">Role</label>
+				<div class="col-sm-3">
+					<select name="role" id="role" class="form-control">
+						<option value="10" <%= user.role == 10 ? 'selected' : '' %>>Affiliate</option>
+						<option value="20" <%= user.role == 20 ? 'selected' : '' %>>Advertiser</option>
+						<option value="100" <%= user.role == 100 ? 'selected' : '' %>>Admin</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="name" class="col-sm-2 control-label">Name</label>
+				<div class="col-sm-3">
+					<input type="text" name="name" value="<%= user.name %>" id="name" class="form-control">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="phone" class="col-sm-2 control-label">Phone</label>
+				<div class="col-sm-3">
+					<input type="text" name="phone" value="<%= user.phone %>" id="phone" class="form-control">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="email" class="col-sm-2 control-label">Email</label>
+				<div class="col-sm-3">
+					<input type="text" name="email" value="<%= user.email %>" id="email" class="form-control">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="password" class="col-sm-2 control-label">New password</label>
+				<div class="col-sm-3">
+					<input type="password" name="password" id="password" class="form-control">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="photo" class="col-sm-2 control-label">Main photo</label>
+				<div class="col-sm-10 main-photo">
+					<div style="position:relative; overflow:hidden; width: 300px; height: 300px;">
+						<img src="<%= user.image ? user.image : 'https://via.placeholder.com/300x300.png?text=User%20photo' %>" alt="user photo" style="width: 300px;">
+					</div>
+					<br>
+					<button class="btn btn-warning upload-more-photo" title="Upload photo"></button>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-9 col-sm-offset-2">
+				<button type="button" value="1" class="btn btn-success save-data">
+					<i class="glyphicon glyphicon-ok"></i>&nbsp;&nbsp;&nbsp;Save
+				</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<%- include('footer') %>

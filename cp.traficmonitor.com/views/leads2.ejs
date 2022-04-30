@@ -1,0 +1,38 @@
+<%- include('header') %>
+
+<div id="list">
+	<div class="row page-header">
+		<div class="col-xs-12"><h1>Leads</h1></div>
+	</div>
+	<div class="table-responsive">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th style="width: 70px;">#PersonID</th>
+					<th>Affiliate</th>
+					<th>SubAffiliate</th>
+					<th>Creative</th>
+					<th>Country</th>
+					<th>Events</th>
+					<th>Date</th>
+				</tr>
+			</thead>
+			
+			<tbody>
+				<% for(var i=0; i<leads.length; i++) { %>
+				<tr>
+					<td>#<%= leads[i].personId %></td>
+					<td><%= leads[i].affiliateName %></td>
+					<td><%= leads[i].subAffiliateName ? leads[i].subAffiliateName : 'NO' %></td>
+					<td><%= leads[i].creativeName %></td>
+					<td><%= leads[i].country %></td>
+					<td><%= leads[i].events %></td>
+					<td><%= leads[i].date %></td>
+				</tr>
+				<% } %>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<%- include('footer') %>

@@ -1,0 +1,21 @@
+<div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal">&times;</button>
+	<h4 class="modal-title">Add subaffiliate</h4>
+</div>
+<div class="form-horizontal">
+	<div class="modal-body">
+		<div class="form-group">
+			<label for="name" class="col-sm-3 control-label">Name</label>
+			<div class="col-sm-9"><input type="text" name="name" value="" id="name" class="form-control" data-validation-engine="validate[required]"></div>
+		</div>
+		<div class="form-group">
+			<label for="utm_id" class="col-sm-3 control-label">UTM ID</label>
+			<div class="col-sm-6"><input type="text" name="utm_id" value="" id="utm_id" class="form-control" data-validation-engine="validate[required]"></div>
+			<div class="col-sm-3"><button type="button" class="btn btn-default generate-id">Generate</button></div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-success add-subaffiliate">Add</button>
+		<button type="button" class="btn" data-dismiss="modal">Cancel</button>
+	</div>
+</div>
