@@ -51,17 +51,6 @@ app.get('/conversion', async (req, res) => {
 		});
 });
 
-app.get('/conversion-test', async (req, res) => {
-	Conversions.addNewTest(req.query)
-		.then((conversionId) => {
-			res.send(JSON.stringify({error: false, text: ''}));
-		})
-		.catch(err => {
-			console.log(err);
-			res.send(JSON.stringify({error: true, text: err}));
-		});
-});
-
 app.post('/save-fingerprint', async (req, res) => {
 	res.setHeader('Access-Control-Allow-Origin', '*');
 	res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
