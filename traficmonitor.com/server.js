@@ -21,6 +21,9 @@ app.use(express.urlencoded());
 app.use(bodyParser.json());
 app.use(detectIp());
 
+const privateKey  = fs.readFileSync(__dirname + '/ssl/key.pem', 'utf8');
+const certificate = fs.readFileSync(__dirname + '/ssl/certificate.pem', 'utf8');
+
 app.get('/', async (req, res) => {
 	res.sendFile("public/index.html");
 });
@@ -161,6 +164,8 @@ app.get('/get-clickid', async (req, res) => {
 	}
 });
 
-app.listen(port, () => {
+var httpsServer = https.createServer({key: privateKey, cert: certificate}, app);
+
+httpsServer.listen(port, function() {
 	console.log(`App listening at port: ${port}`)
 });

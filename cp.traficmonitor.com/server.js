@@ -1,3 +1,4 @@
+const https = require('https');
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
@@ -50,6 +51,9 @@ app.use(function (req, res, next) {
 	res.locals.socketAddress = `${Config.protocol}://${Config.domain}:${Config.port}`;
 	next();
 });
+
+const privateKey  = fs.readFileSync(__dirname + '/ssl/key.pem', 'utf8');
+const certificate = fs.readFileSync(__dirname + '/ssl/certificate.pem', 'utf8');
 
 global.lang = langEn;
 
@@ -615,9 +619,10 @@ app.get('/person/remove/:personId', checkLogin, async (req, res) => {
 });
 
 // -------------- Express server
-const server = app.listen(Config.port, function () {
-	console.log(new Date());
-	console.log('Server listening on port ' + Config.port + '!');
+var httpsServer = https.createServer({key: privateKey, cert: certificate}, app);
+
+const server = httpsServer.listen(Config.port, function() {
+	console.log(`App listening at port: ${Config.port}`)
 });
 
 // Socket
