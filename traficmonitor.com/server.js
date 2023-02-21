@@ -67,7 +67,8 @@ app.post('/save-fingerprint', async (req, res) => {
 		res.send('ERROR');
 	else {
 		try {
-			const geo = geoip.lookup(req.headers['x-real-ip']);
+			const ip = req.headers['x-real-ip'] || req.headers['x-forwarded-for'];
+			const geo = geoip.lookup(ip);
 			
 			const device = req.headers['user-agent'] ? req.headers['user-agent'] : 'unknown';
 			const language = req.headers['accept-language'] ? req.headers['accept-language'] : 'unknown';
@@ -80,7 +81,6 @@ app.post('/save-fingerprint', async (req, res) => {
 				country = {name: 'Unknown'};
 			}
 			
-			// const person = await Persons.search({ip: req.headers['x-real-ip'], device: device, language: language});
 			const person = await Persons.searchByFingerprint(req.body.fingerprint);
 			
 			let person_id;
@@ -88,7 +88,7 @@ app.post('/save-fingerprint', async (req, res) => {
 				person_id = person.id;
 			else {
 				person_id = await Persons.addNew({
-					ip: req.headers['x-real-ip'], 
+					ip: ip, 
 					country: country.name, 
 					device: device, 
 					language: language, 
@@ -119,7 +119,7 @@ app.post('/save-fingerprint', async (req, res) => {
 				creativeId: creative_id, 
 				subAffiliateId: subaffiliate_id, 
 				personId: person_id, 
-				ip: req.headers['x-real-ip'], 
+				ip: ip, 
 				language: language, 
 				countryId: countryId, 
 				country: country.name, 
@@ -149,10 +149,11 @@ app.post('/save-fingerprint', async (req, res) => {
 
 app.get('/get-clickid', async (req, res) => {
 	try {
+		const ip = req.headers['x-real-ip'] || req.headers['x-forwarded-for'];
 		const device = req.headers['user-agent'] ? req.headers['user-agent'] : 'unknown';
 		const language = req.headers['accept-language'] ? req.headers['accept-language'] : 'unknown';
 		const click_id = await Clicks.search({
-			ip: req.headers['x-real-ip'], 
+			ip: ip, 
 			language: language
 		});
 		
