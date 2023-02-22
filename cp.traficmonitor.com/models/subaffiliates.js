@@ -35,8 +35,8 @@ module.exports = {
 	
 	add(data) {
 		return new Promise((resolve, reject) => {
-			db.query("INSERT INTO `subaffiliates` (`affiliateId`, `name`, `utmId`) VALUES (?, ?, ?)", 
-				[data.userId, data.name, data.utmId], 
+			db.query("INSERT INTO `subaffiliates` (`affiliateId`, `name`) VALUES (?, ?, ?)", 
+				[data.userId, data.name], 
 			(err, res) => {
 				if (err)
 					reject('Error in Subaffiliates.add #1\n' + err);
@@ -52,8 +52,8 @@ module.exports = {
 	
 	edit(data) {
 		return new Promise((resolve, reject) => {
-			db.query("UPDATE `subaffiliates` SET `name` = ?, `utmId` = ? WHERE `id` = ? AND `affiliateId` = ?;", 
-				[data.name, data.utmId, data.subaffiliateId, data.userId], 
+			db.query("UPDATE `subaffiliates` SET `name` = ? WHERE `id` = ? AND `affiliateId` = ?;", 
+				[data.name, data.subaffiliateId, data.userId], 
 			(err, rows) => {
 				if (err)
 					reject("Error in Subaffiliates.edit #1\n" + err);

@@ -107,21 +107,6 @@ dataSocket.on('creativeRemove', function (data) {
 
 ///////////////////////////////////////////////////////////////////////////
 // SUBAFFILIATES
-function generatePassword(length) {
-    var charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
-        retVal = "";
-    
-	for (var i = 0, n = charset.length; i < length; ++i)
-        retVal += charset.charAt(Math.floor(Math.random() * n));
-	
-    return retVal;
-}
-
-$("#modal").on("click", ".generate-id", function(e){
-	e.preventDefault();
-	$("#utmId").val(generatePassword(16));
-});
-
 $("#modal").on("click", ".add-subaffiliate", function(e){
 	e.preventDefault();
 	
