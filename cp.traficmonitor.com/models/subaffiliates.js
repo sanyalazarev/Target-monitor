@@ -35,7 +35,7 @@ module.exports = {
 	
 	add(data) {
 		return new Promise((resolve, reject) => {
-			db.query("INSERT INTO `subaffiliates` (`affiliateId`, `name`) VALUES (?, ?, ?)", 
+			db.query("INSERT INTO `subaffiliates` (`affiliateId`, `name`) VALUES (?, ?)", 
 				[data.userId, data.name], 
 			(err, res) => {
 				if (err)
